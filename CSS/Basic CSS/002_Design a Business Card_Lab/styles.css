@@ -1,0 +1,36 @@
+body{
+    font-family: Arial, sans-serif;
+    background-color: #f3e18f;
+}
+.business-card{
+    width: 300px;
+    margin-top: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+    text-align: center;
+    font-size: 16px;
+    background-color: #161616;
+    border: 3px solid #000000;
+}
+
+.profile-image{
+    max-width: 80%;
+    border: 1px solid white;
+}
+
+p{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    color: #f0e1a2;
+}
+
+h2{
+    color: #e7d176;
+}
+
+a{
+    text-decoration: none;
+    color: #76bee7;
+}
+
