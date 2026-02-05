@@ -1,0 +1,93 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+
+body {
+    background-color: hsl(0, 0%, 94%);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container{
+    /* max-width 30% so it looks like a thin container (list lookalike intuition) & doesn't stretch out */
+    max-width: 30%;    
+    background-color: hsl(0, 0%, 100%);
+    /* Positioning the container in center using margin top */
+    margin-top: 100px;
+    /* Centering the container horizontally using margin left & right */
+    margin-left: auto;
+    margin-right: auto;
+    /* Giving breath of room/space inside the content */
+    padding: 30px;
+    border-radius: 10px;
+}
+
+h1{
+    /* Setting width higher so that heading text doesn't wrap in new line*/
+    width: 95%;
+    margin: 20px auto;
+    text-align: center;
+
+}
+
+.todo-list{
+    /* Removing the default bullet icon */
+    list-style-type: none;
+}
+
+ul.todo-list{
+    /* Default ul adds an indention (padding left = 40px), so removing that */
+    padding-left: 0;
+}
+
+.sub-item{
+    list-style-position: inside;
+    margin-left:10px;
+}
+
+.sub-item li::marker{
+    /* Changing the sub items icon */
+    content: "➜";
+}
+
+.sub-item .sub-item-link{
+    display: inline-block;
+    margin-left:10px
+}
+
+.todo-item{
+    /* Space inside the item container and main content*/
+    padding: 15px; 
+    /* Adding little bit more space in bottom */
+    padding-bottom: 30px;
+    background-color: hsl(120, 30%, 92%);
+    border-radius: 10px;
+    /* Adding space between each items */
+    margin-bottom: 20px;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:link{
+    color: rgb(28, 89, 245);
+}
+
+a:visited{
+    color: rgb(188, 9, 188);
+}
+
+a:hover{
+    color: #ec8619;
+}
+
+a:focus{
+    outline: 2px dashed #000;
+}
+
+a:active{
+    color: #f40909;
+}
