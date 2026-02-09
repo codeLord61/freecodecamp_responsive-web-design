@@ -1,174 +1,195 @@
-Step 1
-In this workshop, you will practice how to add custom styles to radio buttons by building a parent teacher conference form. The HTML boilerplate has been provided for you.
+# Parent Teacher Conference Form
 
-Start by adding a main element with a class called container.
+This mini project focuses on building a **semantic HTML form** and applying **custom CSS styling**, with special attention to **custom radio buttons**, transitions, and smart selector usage like `:not()`.
 
-Step 2
-Next, inside your main element, add an h1 element with the text Parent Teacher Conference Form and the classes title and center.
+---
 
-Step 3
-Next, add a paragraph element with the text Please fill out the form below to help schedule your parent-teacher conference.. Your paragraph element should also have the classes description and center.
+## 📐 Semantic HTML Structure
 
-Step 4
-Now it is time to add the form and input elements, which will represent the parent and student information.
+The form is built using semantic and accessible HTML elements:
 
-Start by adding a form element below the p element.
+* **`<main class="container">`**
+  Acts as the primary wrapper for the page content.
 
-Step 5
-The first section of the form will focus on the student's information, like their name and grade.
+* **Headings and descriptions**
 
-Inside the form element, add a fieldset element. Inside that fieldset element, add a legend element with the text Student Information.
+  * `<h1>` for the main title
+  * `<p>` for a short explanation
+    Both are centered using a reusable `.center` class.
 
-Below the legend element, add a label element with the text Full Name:  and a for attribute with the value of student-name.
+* **`<form>` with multiple `<fieldset>` sections**
+  The form is organized logically using `fieldset` and `legend`:
 
-Step 6
-The next step is to add the associated input element for the student's information.
+  * Student Information
+  * Parent/Guardian Information
+  * Preferred Contact Method
+  * Additional Notes
 
-Start by adding an input element with a type attribute set to "text". Then add a name and id attribute, both set to student-name.
+  Using `fieldset` first makes the form:
 
-Next, add a placeholder attribute set to E.g., Jane Doe. And finally, add a required attribute.
+  * Easier to read
+  * More accessible
+  * Visually grouped in a meaningful way
 
-Step 7
-Now it is time to add the form elements to collect the student's grade information.
+* **Proper label–input pairing**
 
-Start by adding another label element with the text Student Grade:  and for attribute set to "grade".
+  * Every input is associated with a `<label>` using the `for` and `id` attributes.
+  * This improves accessibility and click behavior.
 
-Then, below your label element, add an input element with the type attribute set to "number". The name and id attributes should be set to "grade". The placeholder attribute should be set to "E.g., 4". Lastly, your number input should be required.
+---
 
-Step 8
-The next step is the section in the form for the parent information.
+## 🎨 CSS Layout & Styling Approach
 
-Start by adding another fieldset element. Inside that fieldset element, add a legend element with the text Parent/Guardian Information
+### Overall Styling
 
-Step 9
-Now it is time to add the form elements to collect the parent's information.
+* Dark theme using:
 
-Start by adding a label element with the text Parent/Guardian Name:  and for attribute set to "parent-name".
+  * `background-color: midnightblue`
+  * `color: whitesmoke`
 
-Then, below your label element, add an input element with the type attribute set to "text". The name and id attributes should be set to "parent-name". The placeholder attribute should be set to "E.g., Nancy Doe". Lastly, your input should be required.
+* Semi-transparent container background using **8-digit hex color**:
 
-Step 10
-In the next few steps, you will add the form elements responsible for collecting the user's preferred contact method.
+  ```css
+  #ffffff1a
+  ```
 
-Start by adding another fieldset element with a legend element nested inside. Your legend element should have the text Preferred Contact Method.
+  This adds opacity using the alpha channel.
 
-Step 11
-The next step is to add the label and input elements for the email contact method.
+* Centered container with:
 
-Start by adding a label with a class of "contact-method" and a for attribute set to "email". The label text should be Email: .
+  * `max-width`
+  * `margin: auto`
+  * `box-shadow` for depth
 
-Below your label element, add a radio button with id and value attributes set to "email". The name attribute should be set to "contact-method" and the class should be set to "contact-method-radio-btn".
+---
 
-Lastly, make sure this radio button is checked by default.
+## 📦 Fieldset-First Styling
 
-Step 12
-Next, add another label with a class of "contact-method" and a for attribute set to "phone". The label text should be Phone: .
+All form sections are styled consistently:
 
-Below your label element, add a radio button with id and value attributes set to "phone". The name attribute should be set to "contact-method" and the class should be set to "contact-method-radio-btn".
+```css
+fieldset {
+  border: 1px solid gray;
+  border-radius: 5px;
+  margin: 20px 0;
+  padding: 20px;
+}
+```
 
-Step 13
-It's a good practice to allow users to add additional notes or concerns.
+Legends are emphasized using larger font size and heavier weight, making each section clearly identifiable.
 
-Below your third fieldset element, add a new fieldset element. Inside, add a legend element with the text Additional Notes.
+---
 
-Step 14
-Now, add a label element with the text Any specific concerns or topics you'd like to discuss? and a for attribute set to notes.
+## 🧠 Smart Selector Usage: `:not()`
 
-Below this label, add a textarea element. Set its id to notes, name to notes, rows to 4, and cols to 50.
+Instead of styling everything individually, the `:not()` pseudo-class is used to **exclude specific elements**.
 
-Step 15
-Finally, you should add the submit button for the form.
+### Example 1: Stack most labels vertically
 
-Below the last fieldset element, add a button element with the class submit-btn and type attribute set to "submit". The text content of the button should be Submit Form.
+```css
+label:not(.contact-method) {
+  display: block;
+  margin: 10px 0;
+}
+```
 
-With this, your HTML structure is complete!
+This keeps normal labels stacked while allowing radio button labels to stay inline.
 
-Step 16
-Now that the HTML structure is complete, you should move on to the CSS styling.
+### Example 2: Exclude radio buttons from general input styles
 
-Open your styles.css file. First, set a dark background color for the body and a light color for the text.
+```css
+input:not(.contact-method-radio-btn), textarea {
+  width: 95%;
+  padding: 10px;
+}
+```
 
-Select the body element and set its background-color to midnightblue and color to whitesmoke.
+This prevents radio buttons from inheriting styles meant for text inputs.
 
-Step 17
-Next, you should style the main container. Select the element with the class container and set its background-color to the hex-code #ffffff1a.
+---
 
-A hex code is a six-digit combination of numbers and letters used in HTML and CSS to represent colors. It starts with a # followed by three pairs:
+## 🔘 Custom Radio Button Styling 
 
-The first two digits represent red
-The next two represent green
-The last two represent blue
-For example, #ffffff is pure white because it has the maximum value for red, green, and blue.
+Default radio buttons are replaced with a fully custom design.
 
-You can also add two extra digits at the end to control opacity (called the alpha channel). In #ffffff1a, the 1a makes the white color semi-transparent. The lower the alpha value, the more transparent the color appears. You'll learn more about hex codes later!
+### 1️⃣ Remove native appearance
 
-Step 18
-Continuing with the main container, give the container class a width of 80% and a max-width of 600px. Also, add a border-radius of 10px and set margin to 20px auto to center it horizontally.
+```css
+.contact-method-radio-btn {
+  appearance: none;
+}
+```
 
-Step 19
-Now, you should add some padding to the container. Set padding to 10px 20px. This way, you set a padding of 10px on the top and bottom, and 20px on the left and right.
+This gives full control over styling.
 
-Step 20
-To make the container stand out, you should add a box-shadow set to 0 5px 15px black.
+---
 
-This adds a shadow effect around the container. The values control the horizontal offset, vertical offset, blur radius, and color respectively.
+### 2️⃣ Create the outer circle
 
-Step 21
-You added a center class to some elements in the HTML. Now, you should define that class to center those elements.
+```css
+width: 20px;
+height: 20px;
+border-radius: 50%;
+border: 2px solid gray;
+```
 
-Target the center class and center the elements having it with a text-align property set to center.
+---
 
-Step 22
-The description text needs to be a bit larger. Select the element with the class description and set its font-size to 1.2rem.
+### 3️⃣ Add the inner circle using `::before`
 
-Step 23
-Time to style the fieldset elements to give them a distinct border.
+```css
+.contact-method-radio-btn::before {
+  content: " ";
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+```
 
-Select the fieldset element. Set its border to 1px solid gray, border-radius to 5px, margin to 20px 0, and padding to 20px.
+The inner circle exists even when unchecked—but is hidden using scale.
 
-Step 24
-To make the legend text more prominent, you need to style it.
+---
 
-Select the fieldset legend element. Set its font-size to 1.3rem and its font-weight to 600.
+### 4️⃣ Smooth transition animation
 
-font-weight controls the boldness of text.
+```css
+transform: translate(3px, 3px) scale(0);
+transition: all 0.3s ease-in;
+```
 
-Common values of font-weight are:
+* `scale(0)` hides the inner circle
+* Transition creates a smooth animation when checked
 
-normal → Regular weight (default)
-bold → Bold text
-lighter → Lighter than the parent element
-bolder → Bolder than the parent element
-Numeric values like:
-100 (thin)
-400 (normal)
-700 (bold)
-900 (extra bold)
+---
 
-Step 25
-Now, you should increase the font size for all label elements.
+### 5️⃣ Checked state styling
 
-Select the label element and set its font-size to 1.2rem.
+```css
+.contact-method-radio-btn:checked::before {
+  transform: translate(3px, 3px) scale(1);
+  background-color: lightgreen;
+}
+```
 
-Step 26
-By default, label elements are inline. To make them stack vertically (except for your radio button labels), use the :not() pseudo-class.
+When selected:
 
-The :not() pseudo-class negates a selection. Here, it selects all label elements that do not have the class contact-method.
+* The inner circle scales up
+* Color appears
+* Animation feels responsive and modern
 
-Select label:not(.contact-method), then set display to block and margin to 10px 0.
+---
 
-Basically the preferred contact method legend fieldset has radio buttons. We don't wanna vertically stack them. Every other labels doesn't have that, we meant to stack vertically other label elements.
+## ✨ Button Styling & Feedback
 
-Step 27
-Now, you should style the input and textarea elements. It's often a good idea to start with general styles for input and textarea, then refine specific types.
+The submit button is styled for clarity and interaction:
 
-Select input:not(.contact-method-radio-btn), textarea. Set background-color to #ffffff1a, width to 95%, border to 1px solid gray, border-radius to 5px, and padding to 10px.
+* Rounded corners
+* Centered layout
+* Pointer cursor
+* Hover effect for feedback
 
-The :not(.contact-method-radio-btn) part excludes radio buttons with that class from being styled by this rule. This way, we can apply general styles to most inputs while keeping radio buttons separate.
-
-These styles will make your form fields wider and more readable. Try previewing the form to see how the layout changes.
-
-Step 28
-To ensure the text entered into inputs and textareas, as well as their placeholders, is visible, set their color.
-
-Select input, input::placeholder, textarea and set color to whitesmoke.
+```css
+.submit-btn:hover {
+  background-color: midnightblue;
+}
+```
